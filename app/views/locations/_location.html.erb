@@ -1,0 +1,21 @@
+<tr> 
+  <td>
+    <%= location.name %>
+  </td>
+
+  <td>
+    <%= location.position %>
+  </td>
+
+  <td>
+    <%= location.purpose %>
+  </td>  
+
+  <td>
+    <%= location.secret ? "Secret" : "Public" %>
+  </td>
+
+  <li><%= link_to "Delete Location", faction_path(@faction), 
+    method: :delete,
+    data: { confirm: "Are you sure you want to delete " + location.name + "?" } %></li>
+</tr>

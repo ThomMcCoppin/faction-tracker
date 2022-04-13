@@ -1,0 +1,18 @@
+<h1>Factions</h1>
+
+<h2>Your Factions</h2>
+
+<ul>
+  <% @factions.each do |faction| %>
+    <h3>
+      <%= link_to faction.title, faction %>
+    </h3>
+  <% end %>
+  <%= render plain: 'Add Some Factions!' if @factions.empty? %>
+</ul>
+
+<%= link_to "New Faction", new_faction_path %>
+
+<%= link_to "Export Factions", :controller => "factions", :action => "export", :id => @factions.ids %><br>
+
+<h3><%= link_to "View Players", '/players' %></h3>

@@ -1,0 +1,14 @@
+<html>  
+  <h1>
+    Factions
+  </h1>
+
+  <%= @factions.each do |faction| %>
+
+    <h1><%= faction.title %></h1>
+    <b><p>Alignment: <%= faction.alignment %></p></b>
+    <p>Faction goal: <%= faction.goal %></p
+    <p>Description: <%= faction.description %></p>
+
+  <% end %>
+</html>

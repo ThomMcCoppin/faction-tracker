@@ -1,0 +1,136 @@
+<h1><%= @faction.title %></h1>
+<b><p>Alignment: <%= @faction.alignment %></p></b>
+<p>Faction goal: <%= @faction.goal %></p
+<p>Description: <%= @faction.description %></p>
+
+
+<ul>
+  <li><%= link_to "Edit Faction", edit_faction_path(@faction) %></li>
+  <li><%= link_to "Delete Faction", faction_path(@faction), 
+      method: :delete,
+      data: { confirm: "Are you sure?" } %></li>
+</ul>
+
+<h2>NPCs</h2>
+<table>
+  <thead>
+  <tr>
+    <th><%= render plain: 'Name' if @faction.npcs.present? %></th>
+    <th><%= render plain: 'Race' if @faction.npcs.present? %></th>
+    <th><%= render plain: 'Class' if @faction.npcs.present? %></th>
+    <th><%= render plain: 'Description' if @faction.npcs.present? %></th>
+    <th><%= render plain: 'Actions' if @faction.npcs.present? %></th>
+  </tr>
+  </thead>
+  <tbody>
+    <%= render @faction.npcs %>
+  </tbody>
+  <%= render plain: 'Populate your faction!' if @faction.npcs.empty? %>
+</table>
+
+<h2>Add an NPC:</h2>
+<%= form_with model: [ @faction, @faction.npcs.build ] do |form| %>
+  <tr>
+    <p>
+      <%= form.label :name %><br>
+      <%= form.text_field :name %>
+    </p>
+    <p>
+      <%= form.label :race %><br>
+      <%= form.text_field :race %>
+    </p>
+    <p>
+      <%= form.label "Class" %><br>
+      <%= form.text_field :characterclass %>
+    </p>
+    <p>
+      <%= form.label :description %><br>
+      <%= form.text_area :description %>
+    </p>
+    <p>
+      <%= form.submit %>
+    </p>
+  </tr>
+<% end %>
+
+<h2>Artifacts</h2>
+<table>
+  <thead>
+  <tr>
+    <th><%= render plain: 'Name' if @faction.artifacts.present? %></th>
+    <th><%= render plain: 'Description' if @faction.artifacts.present? %></th>
+    <th><%= render plain: 'Effects' if @faction.artifacts.present? %></th>
+    <th><%= render plain: 'Magic' if @faction.artifacts.present? %></th>
+    <th><%= render plain: 'Actions' if @faction.artifacts.present? %></th>
+  </tr>
+  </thead>
+  <tbody>
+    <%= render @faction.artifacts %>
+    <%= render plain: "What treasures do the #{@faction.title} hold?" if @faction.artifacts.empty? %>
+  </tbody>
+</table>
+
+
+<h2>Add an Artifact:</h2>
+<%= form_with model: [ @faction, @faction.artifacts.build ] do |form| %>
+  <p>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </p>
+  <p>
+    <%= form.label "Magical:" %><br>
+    <%= form.check_box :magic %>
+  </p>
+  <p>
+    <%= form.label :description %><br>
+    <%= form.text_field :description %>
+  </p>
+  <p>
+    <%= form.label :effects %><br>
+    <%= form.text_area :effects %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+
+<h2>Locations</h2>
+<table>
+  <thead>
+  <tr>
+    <th><%= render plain: 'Name' if @faction.locations.present? %></th>
+    <th><%= render plain: 'Position' if @faction.locations.present? %></th>
+    <th><%= render plain: 'Purpose' if @faction.locations.present? %></th>
+    <th><%= render plain: 'Type' if @faction.locations.present? %></th>
+    <th><%= render plain: 'Actions' if @faction.locations.present? %></th>
+  </tr>
+  </thead>
+  <tbody>
+    <%= render @faction.locations %>
+    <%= render plain: "What locations can you find the #{@faction.title} in?" if @faction.locations.empty? %>
+  </tbody>
+</table>
+
+
+<h2>Add a Location:</h2>
+<%= form_with model: [ @faction, @faction.locations.build ] do |form| %>
+  <p>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </p>
+  <p>
+    <%= form.label :position %><br>
+    <%= form.text_field :position %>
+  </p>
+  <p>
+    <%= form.label :purpose %><br>
+    <%= form.text_field :purpose %>
+  </p>
+  <p>
+    <%= form.label :secret %><br>
+    <%= form.check_box :secret %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>

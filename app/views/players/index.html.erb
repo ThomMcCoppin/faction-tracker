@@ -1,0 +1,16 @@
+<h1>Players</h1>
+
+<h2>Your Players</h2>
+
+<ul>
+  <% @players.all.each do |player| %>
+    <h3>
+      <%= link_to player.first_name, player %>
+    </h3>
+  <% end %>
+  <%= render plain: 'Who are your players?' if @players.empty? %>
+</ul>
+
+<%= link_to "New Player", new_player_path %>
+
+<h3><%= link_to "Back to Factions", root_path %></h3>

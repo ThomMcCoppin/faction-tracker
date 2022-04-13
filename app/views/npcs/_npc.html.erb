@@ -1,0 +1,23 @@
+<tr>
+  <td>
+    <%= npc.name %>
+  </td>
+
+  <td>
+    <%= npc.race %>
+  </td>
+
+  <td>
+    <%= npc.characterclass %>
+  </td>
+
+  <td>
+    <%= npc.description %>
+  </td>
+
+  <td>
+    <%= link_to "Delete NPC", faction_path(@faction), 
+        method: :delete,
+        data: { confirm: "Are you sure you want to delete " + npc.name + "?" } %>
+  </td>
+</tr>

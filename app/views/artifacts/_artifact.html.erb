@@ -1,0 +1,21 @@
+<tr>
+  <td>
+    <%= artifact.name %>
+  </td>
+
+  <td>
+    <%= artifact.magic ? "Magical" : "Mundane" %>
+  </td>
+
+  <td>
+    <%= artifact.description %>
+  </td>
+
+  <td>
+    <%= artifact.effects %>
+  </td>
+
+  <li><%= link_to "Delete Location", faction_path(@faction), 
+      method: :delete,
+      data: { confirm: "Are you sure you want to delete " + artifact.name + "?" } %></li>
+</tr>
